@@ -3,301 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Profesional - Melisa</title>
+    <title>CV Melisa - Deep Purple Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #1e3a8a;
-            --accent-blue: #3b82f6;
-            --soft-blue: #dbeafe;
-            --bg-light: #f0f4f8;
+            --deep-purple: #1e1b4b;
+            --vibrant-purple: #8b5cf6;
+            --soft-purple: #ede9fe;
+            --star-color: #fef08a;
         }
         body {
-            background-color: var(--bg-light);
-            font-family: 'Inter', sans-serif;
-            color: #1e293b;
+            background-color: var(--deep-purple);
+            font-family: 'Quicksand', sans-serif;
+            color: #f1f5f9;
             overflow-x: hidden;
+            margin: 0;
+            background: radial-gradient(circle at center, #2e1065 0%, #1e1b4b 100%);
         }
 
-        /* Animasi Partikel Biru Melayang */
-        .sparkle {
+        /* Animasi Bintang Berkelap-kelip */
+        .star {
             position: fixed;
-            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            background: white;
             border-radius: 50%;
             pointer-events: none;
-            opacity: 0.3;
             z-index: -1;
-            animation: floatBlue 12s infinite linear;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            box-shadow: 0 0 5px var(--star-color);
         }
 
-        @keyframes floatBlue {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.3; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.8); box-shadow: 0 0 10px white; }
         }
 
-        /* Maskot Lucu Interaktif */
-        .cute-mascot {
-            position: absolute;
-            bottom: -15px;
-            right: 25px;
-            width: 70px;
-            z-index: 10;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            animation: idleWobble 4s infinite ease-in-out;
+        /* Animasi Gerak Kanan Kiri (Wobble) */
+        .wobble-container {
+            animation: moveSide 10s infinite ease-in-out;
         }
-        @keyframes idleWobble {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg) scale(1.05); }
-        }
-        .cute-mascot:hover {
-            transform: translateY(-20px) scale(1.2) rotate(10deg);
+
+        @keyframes moveSide {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(15px); }
         }
 
         /* Efek Mengetik */
-        .typing-text {
-            border-right: 3px solid var(--accent-blue);
-            white-space: nowrap;
+        .typing-effect {
+            display: inline-block;
             overflow: hidden;
+            border-right: 2px solid var(--vibrant-purple);
+            white-space: nowrap;
             width: 0;
             animation: typing 4s steps(40) forwards, blink 0.75s step-end infinite;
         }
+
         @keyframes typing {
             from { width: 0 }
             to { width: 100% }
         }
+
         @keyframes blink {
             from, to { border-color: transparent }
-            50% { border-color: var(--accent-blue) }
+            50% { border-color: var(--vibrant-purple) }
+        }
+
+        /* Maskot Bintang Melompat */
+        .floating-star-mascot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            animation: bounceIn 1s ease-out, bounce 4s infinite ease-in-out;
+            cursor: pointer;
+            z-index: 50;
+            filter: drop-shadow(0 0 15px rgba(254, 240, 138, 0.5));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-25px) rotate(15deg) scale(1.1); }
         }
 
         .elegant-title {
             font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
-        .sidebar-dark {
-            background-color: var(--primary-blue);
-            color: #f1f5f9;
+
+        .sidebar-purple {
+            background: linear-gradient(135deg, #4c1d95 0%, #2e1065 100%);
         }
+
+        .card-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-glass:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--vibrant-purple);
+            background: rgba(139, 92, 246, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
         .timeline-dot {
             width: 14px;
             height: 14px;
-            background-color: var(--accent-blue);
+            background-color: var(--vibrant-purple);
             border-radius: 50%;
             position: absolute;
             left: -8px;
             top: 5px;
-            box-shadow: 0 0 15px var(--accent-blue);
-            animation: pulseBlue 2s infinite;
-        }
-        @keyframes pulseBlue {
-            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+            box-shadow: 0 0 15px var(--vibrant-purple);
+            animation: pulse 2s infinite;
         }
 
-        .card-elegant {
-            background: white;
-            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.1);
-            position: relative;
-        }
-        
-        /* Kartu Pendidikan Hover */
-        .edu-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .edu-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            border-color: var(--accent-blue);
-            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.1);
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
+            70% { transform: scale(1.2); box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
         }
     </style>
 </head>
 <body class="py-10 px-4">
 
-    <!-- Script Partikel -->
+    <!-- Efek Bintang Latar Belakang -->
     <script>
-        for (let i = 0; i < 20; i++) {
-            let div = document.createElement('div');
-            div.className = 'sparkle';
-            let size = Math.random() * 8 + 3;
-            div.style.width = size + 'px';
-            div.style.height = size + 'px';
-            div.style.left = Math.random() * 100 + 'vw';
-            div.style.animationDuration = (Math.random() * 8 + 10) + 's';
-            div.style.animationDelay = (Math.random() * 5) + 's';
-            document.body.appendChild(div);
+        for (let i = 0; i < 70; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            let size = Math.random() * 4 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.setProperty('--duration', (Math.random() * 4 + 2) + 's');
+            document.body.appendChild(star);
         }
-
-        // Script untuk reveal on scroll
-        document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-in-section').forEach(section => {
-                observer.observe(section);
-            });
-        });
     </script>
 
-    <div class="max-w-5xl mx-auto card-elegant rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
-        
-        <!-- Maskot Burung Biru -->
-        <div class="cute-mascot" title="Klik aku!">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="70" fill="#3b82f6" />
-                <circle cx="75" cy="85" r="8" fill="white" />
-                <circle cx="125" cy="85" r="8" fill="white" />
-                <circle cx="78" cy="85" r="3" fill="black" />
-                <circle cx="128" cy="85" r="3" fill="black" />
-                <path d="M90 110 L110 110 L100 125 Z" fill="#fbbf24" />
-                <path d="M40 100 Q20 80 40 60" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" />
-                <path d="M160 100 Q180 80 160 60" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" />
-            </svg>
-        </div>
+    <!-- Maskot Bintang Interaktif -->
+    <div class="floating-star-mascot" onclick="this.style.transform='scale(1.5) rotate(360deg)'">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 15 L125 75 L185 85 L140 130 L150 190 L100 160 L50 190 L60 130 L15 85 L75 75 Z" fill="#fef08a" stroke="#eab308" stroke-width="5"/>
+            <circle cx="80" cy="100" r="8" fill="#000" />
+            <circle cx="120" cy="100" r="8" fill="#000" />
+            <path d="M85 130 Q100 145 115 130" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" />
+        </svg>
+    </div>
 
-        <!-- Sidebar -->
-        <aside class="w-full md:w-1/3 sidebar-dark p-8 md:p-10 relative">
-            <div class="text-center mb-10 fade-in-section">
+    <div class="max-w-5xl mx-auto wobble-container shadow-2xl rounded-3xl overflow-hidden flex flex-col md:flex-row border border-purple-900/40">
+        
+        <!-- Sidebar (Biodata) -->
+        <aside class="w-full md:w-1/3 sidebar-purple p-8 md:p-10 relative">
+            <div class="text-center mb-10">
                 <div class="inline-block relative group">
-                    <div class="w-44 h-44 rounded-2xl border-4 border-blue-400 overflow-hidden mx-auto bg-slate-800 shadow-xl transition-transform duration-500 group-hover:rotate-0 rotate-3">
+                    <div class="w-44 h-44 rounded-full border-4 border-vibrant-purple overflow-hidden mx-auto shadow-2xl transition-transform duration-700 group-hover:rotate-12">
                         <img src="melisa.jpeg" 
                              alt="Foto Melisa" 
                              class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute -bottom-3 -right-3 bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center border-4 border-primary-blue animate-bounce">
-                        <i class="fas fa-microphone-alt"></i>
+                    <div class="absolute -bottom-2 -right-2 bg-yellow-400 text-purple-900 w-10 h-10 rounded-full flex items-center justify-center border-4 border-purple-900 animate-bounce">
+                        <i class="fas fa-heart text-sm"></i>
                     </div>
                 </div>
                 <h1 class="elegant-title text-2xl mt-8 text-white uppercase tracking-widest">Melisa</h1>
-                <p class="text-blue-300 text-[10px] font-bold mt-2 tracking-[0.4em] opacity-90 italic">PROFESSIONAL RESUME</p>
+                <p class="text-purple-300 text-[10px] font-bold mt-2 tracking-[0.4em] opacity-80 uppercase">Siswa SMA KP</p>
             </div>
 
-            <div class="space-y-8 fade-in-section">
-                <!-- Kontak -->
-                <section>
-                    <h3 class="text-blue-400 text-[11px] font-bold uppercase tracking-widest border-b border-blue-800 pb-2 mb-4">Kontak</h3>
+            <div class="space-y-8">
+                <section class="transition-all duration-500 hover:translate-x-2">
+                    <h3 class="text-purple-300 text-[11px] font-bold uppercase tracking-widest border-b border-purple-500/30 pb-2 mb-4">Biodata</h3>
                     <ul class="space-y-4 text-sm font-light">
-                        <li class="flex items-center gap-4 hover:translate-x-2 transition-transform">
-                            <i class="fas fa-birthday-cake text-blue-400"></i> 07 Maret 2006
-                        </li>
-                        <li class="flex items-center gap-4 hover:translate-x-2 transition-transform">
-                            <i class="fas fa-phone text-blue-400"></i> 0823-1286-0466
-                        </li>
-                        <li class="flex items-start gap-4 hover:translate-x-2 transition-transform">
-                            <i class="fas fa-map-marker-alt text-blue-400 mt-1"></i>
-                            <span>Baleendah, Bandung</span>
+                        <li class="flex items-center gap-4"><i class="fas fa-calendar-day text-vibrant-purple"></i> 07 Maret 2006</li>
+                        <li class="flex items-center gap-4"><i class="fas fa-phone-alt text-vibrant-purple"></i> 0823-1286-0466</li>
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-map-marked-alt text-vibrant-purple mt-1"></i>
+                            <span class="leading-relaxed">Baleendah, Bandung, Jawa Barat</span>
                         </li>
                     </ul>
                 </section>
 
-                <!-- Media Sosial -->
-                <section>
-                    <h3 class="text-blue-400 text-[11px] font-bold uppercase tracking-widest border-b border-blue-800 pb-2 mb-4">Sosial Media</h3>
-                    <a href="https://instagram.com/mlysaxvz" class="flex items-center gap-4 p-2 rounded-lg hover:bg-blue-900 transition-all">
-                        <i class="fab fa-instagram text-xl text-pink-400"></i> @mlysaxvz
+                <section class="transition-all duration-500 hover:translate-x-2">
+                    <h3 class="text-purple-300 text-[11px] font-bold uppercase tracking-widest border-b border-purple-500/30 pb-2 mb-4">Sosial Media</h3>
+                    <a href="https://instagram.com/mlysaxvz" target="_blank" class="flex items-center gap-4 group text-sm hover:text-white transition-all">
+                        <i class="fab fa-instagram text-xl text-pink-400 group-hover:scale-125 transition-transform"></i> @mlysaxvz
                     </a>
                 </section>
 
-                <!-- Keahlian -->
-                <section>
-                    <h3 class="text-blue-400 text-[11px] font-bold uppercase tracking-widest border-b border-blue-800 pb-2 mb-4">Keahlian</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-900/50 border border-blue-700 px-3 py-1 rounded text-xs">Memasak</span>
-                        <span class="bg-blue-900/50 border border-blue-700 px-3 py-1 rounded text-xs">Bernyanyi</span>
-                        <span class="bg-blue-900/50 border border-blue-700 px-3 py-1 rounded text-xs">English</span>
+                <section class="transition-all duration-500 hover:translate-x-2">
+                    <h3 class="text-purple-300 text-[11px] font-bold uppercase tracking-widest border-b border-purple-500/30 pb-2 mb-4">Bahasa</h3>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between"><span>Indonesia</span><span class="text-vibrant-purple">Native</span></div>
+                        <div class="flex justify-between"><span>Inggris</span><span class="text-vibrant-purple">Beginner</span></div>
                     </div>
                 </section>
             </div>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-8 md:p-16 relative">
+        <main class="flex-1 bg-slate-900/60 p-8 md:p-16 relative overflow-hidden">
             
-            <!-- Motto dengan Animasi Mengetik -->
-            <section class="mb-14 fade-in-section">
+            <!-- Tentang Saya (Dengan Animasi Mengetik) -->
+            <section class="mb-14">
                 <div class="flex items-center gap-4 mb-6">
-                    <h2 class="elegant-title text-2xl text-blue-900">Motto Hidup</h2>
-                    <div class="h-[2px] flex-1 bg-blue-50"></div>
+                    <h2 class="elegant-title text-2xl text-vibrant-purple">Tentang Saya</h2>
+                    <div class="h-[1px] flex-1 bg-purple-900/30"></div>
                 </div>
-                <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 overflow-hidden">
-                    <p class="typing-text text-blue-900 text-xl font-semibold italic">
-                        "Mimpikan, pikirkan, ucapkan, lakukan, konsisten."
-                    </p>
-                </div>
-            </section>
-
-            <!-- Pengalaman -->
-            <section class="mb-14 fade-in-section">
-                <div class="flex items-center gap-4 mb-8">
-                    <h2 class="elegant-title text-2xl text-blue-900 uppercase">Pengalaman</h2>
-                    <div class="h-[2px] flex-1 bg-blue-50"></div>
-                </div>
-                <div class="relative border-l-2 border-blue-100 pl-8 space-y-12">
-                    <div class="group">
-                        <div class="timeline-dot group-hover:scale-150 transition-transform"></div>
-                        <h4 class="font-bold text-blue-900 text-lg">English Club (SMA)</h4>
-                        <p class="text-xs text-blue-500 font-bold mb-2">LULUS 2026</p>
-                        <p class="text-sm text-slate-500 font-light">Aktif dalam pengembangan komunikasi multibahasa dan public speaking.</p>
-                    </div>
-
-                    <div class="group">
-                        <div class="timeline-dot group-hover:scale-150 transition-transform"></div>
-                        <h4 class="font-bold text-blue-900 text-lg">PMR (SMP)</h4>
-                        <p class="text-xs text-blue-500 font-bold mb-2">LULUS 2021</p>
-                        <p class="text-sm text-slate-500 font-light">Mempelajari kemanusiaan dan pertolongan pertama pada kecelakaan.</p>
-                    </div>
+                <div class="card-glass p-6 rounded-2xl italic text-slate-300 leading-relaxed">
+                    <span class="typing-effect">
+                        "Saya seorang siswa SMA Karya Pembangunan Baleendah."
+                    </span>
+                    <p class="mt-4">Saya sangat suka memasak, menonton film drama China, dan mendengarkan musik untuk mengisi waktu luang saya.</p>
                 </div>
             </section>
 
-            <!-- Pendidikan Grid dengan Tilt -->
-            <section class="fade-in-section">
+            <!-- Hobi & Keahlian -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+                <section>
+                    <h3 class="elegant-title text-lg text-vibrant-purple mb-4">Hobi</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 card-glass p-3 rounded-lg group">
+                            <i class="fas fa-video text-purple-500 group-hover:rotate-12 transition-transform"></i>
+                            <span class="text-sm text-slate-300">Menonton Drama China</span>
+                        </div>
+                        <div class="flex items-center gap-3 card-glass p-3 rounded-lg group">
+                            <i class="fas fa-music text-purple-500 group-hover:rotate-12 transition-transform"></i>
+                            <span class="text-sm text-slate-300">Mendengarkan Musik</span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3 class="elegant-title text-lg text-vibrant-purple mb-4">Keahlian</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-vibrant-purple/20 text-vibrant-purple border border-vibrant-purple/30 px-5 py-2 rounded-full text-xs font-bold hover:bg-vibrant-purple hover:text-white transition-all cursor-default shadow-lg">Memasak</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Pendidikan -->
+            <section class="mb-14">
                 <div class="flex items-center gap-4 mb-8">
-                    <h2 class="elegant-title text-2xl text-blue-900 uppercase">Pendidikan</h2>
-                    <div class="h-[2px] flex-1 bg-blue-50"></div>
+                    <h2 class="elegant-title text-2xl text-vibrant-purple uppercase">Pendidikan</h2>
+                    <div class="h-[1px] flex-1 bg-purple-900/30"></div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="edu-card p-6 bg-white border border-slate-100 rounded-xl text-center">
-                        <i class="fas fa-graduation-cap text-blue-400 mb-3 text-2xl"></i>
-                        <h4 class="font-bold text-blue-900">SMA</h4>
-                        <p class="text-[10px] text-slate-400 mt-1 uppercase">2026</p>
+                <div class="space-y-4">
+                    <div class="card-glass p-5 rounded-xl flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-vibrant-purple/20 flex items-center justify-center group-hover:bg-vibrant-purple group-hover:text-white transition-all">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">SMA Karya Pembangunan</h4>
+                                <p class="text-[10px] text-purple-400 font-bold uppercase tracking-wider mt-1">Lulus 2026</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="edu-card p-6 bg-white border border-slate-100 rounded-xl text-center">
-                        <i class="fas fa-school text-blue-400 mb-3 text-2xl"></i>
-                        <h4 class="font-bold text-blue-900">SMP</h4>
-                        <p class="text-[10px] text-slate-400 mt-1 uppercase">2021</p>
+                    <div class="card-glass p-5 rounded-xl flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-vibrant-purple/20 flex items-center justify-center group-hover:bg-vibrant-purple group-hover:text-white transition-all">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">SMP Bina Negara 02</h4>
+                                <p class="text-[10px] text-purple-400 font-bold uppercase tracking-wider mt-1">Lulus 2022</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="edu-card p-6 bg-white border border-slate-100 rounded-xl text-center">
-                        <i class="fas fa-book-reader text-blue-400 mb-3 text-2xl"></i>
-                        <h4 class="font-bold text-blue-900">SD</h4>
-                        <p class="text-[10px] text-slate-400 mt-1 uppercase">2018</p>
+                    <div class="card-glass p-5 rounded-xl flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-vibrant-purple/20 flex items-center justify-center group-hover:bg-vibrant-purple group-hover:text-white transition-all">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">SD Cibadak 02</h4>
+                                <p class="text-[10px] text-purple-400 font-bold uppercase tracking-wider mt-1">Lulus 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Organisasi -->
+            <section>
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="elegant-title text-2xl text-vibrant-purple uppercase">Organisasi</h2>
+                    <div class="h-[1px] flex-1 bg-purple-900/30"></div>
+                </div>
+                <div class="relative border-l-2 border-purple-800/50 ml-4 pl-10 space-y-12">
+                    <div class="group relative">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-bold text-white group-hover:text-vibrant-purple transition-colors">English Club</h4>
+                        <p class="text-[10px] text-purple-400 font-bold uppercase mt-1">SMA KARYA PEMBANGUNAN</p>
+                    </div>
+                    <div class="group relative">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-bold text-white group-hover:text-vibrant-purple transition-colors">PMR (Palang Merah Remaja)</h4>
+                        <p class="text-[10px] text-purple-400 font-bold uppercase mt-1">SMP BINA NEGARA 02</p>
+                    </div>
+                    <div class="group relative">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-bold text-white group-hover:text-vibrant-purple transition-colors">Pramuka</h4>
+                        <p class="text-[10px] text-purple-400 font-bold uppercase mt-1">SD CIBADAK 02</p>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <footer class="mt-12 text-center fade-in-section">
-        <p class="text-slate-400 text-[10px] uppercase tracking-[0.5em]">
-            Melisa &bull; 2026 &bull; Dream &bull; Act &bull; Consistent
+    <footer class="mt-12 text-center">
+        <p class="text-slate-500 text-[10px] uppercase tracking-[0.5em] animate-pulse">
+            &bull; MELISA &bull; 2026 &bull; DREAM BIG &bull;
         </p>
     </footer>
 
